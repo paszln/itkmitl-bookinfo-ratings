@@ -1,0 +1,8 @@
+services:
+  ratings:
+    build: .
+    image: ghcr.io/paszln/bookinfo-ratings:dev
+    ports:
+      - "8080:8080"
+    environment:
+      SERVICE_VERSION: v1
