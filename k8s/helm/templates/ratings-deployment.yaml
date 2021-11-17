@@ -19,20 +19,6 @@ spec:
       - name: {{ .Release.Name }}
         image: {{ .Values.ratings.image }}:{{ .Values.ratings.tag }}
         imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-          name: web-port
-          protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-            scheme: HTTP
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-            scheme: HTTP
         {{- if or (.Values.extraEnv) (.Values.extraEnvSecret) }}
         env:
 
@@ -56,5 +42,6 @@ spec:
         {{- end }}
 
         {{- end }}
+
       imagePullSecrets:
       - name: {{ .Values.ratings.imagePullSecrets }}
