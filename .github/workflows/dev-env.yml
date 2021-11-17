@@ -44,3 +44,9 @@ jobs:
                 "COMMIT_SHA": "${{ github.sha }}"
               }
             }
+  test:
+    need: deploy
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Run acceptance test
+        uses: curl http://itkmitl.bookinfo.dev.opsta.net/student[X]/ratings/health | grep "Ratings is working"
