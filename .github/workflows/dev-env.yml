@@ -45,7 +45,7 @@ jobs:
               }
             }
   test:
-    need: deploy
+    needs: deploy
     runs-on: ubuntu-20.04
     steps:
       - name: Run acceptance test
